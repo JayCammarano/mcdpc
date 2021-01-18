@@ -1,0 +1,78 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended",
+    "prettier/react",
+    "prettier/@typescript-eslint"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+    }
+  },
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "@typescript-eslint",
+    "graphql"
+  ],
+  "rules": {
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "react/button-has-type": "warn",
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "react/no-unescaped-entities": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test{.ts,.tsx}",
+          "**/*.spec{.ts,.tsx}",
+          "**/gatsby*{.ts,.tsx}"
+        ]
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/interface-name-prefix": [
+      "off",
+      {
+        "prefixWithI": "always"
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "class-methods-use-this": "warn",
+    "@typescript-eslint/no-useless-constructor": "off",
+    "react/jsx-key": "warn",
+    "@typescript-eslint/no-empty-interface": "warn",
+    "graphql/template-strings": ["error", {
+      "env": "relay",
+      "tagName": "graphql",
+      "schemaJsonFilepath": "src/__generated__/gatsby-introspection.json"
+    }]
+  }
+}
