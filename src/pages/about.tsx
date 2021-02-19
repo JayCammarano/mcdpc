@@ -38,12 +38,12 @@ const AboutPage: React.FC<IAboutPageProps> = ({ location, data }) => (
               </div>
               <div className="flex flex-col items-center justify-center text-center">
                 <h2 className="mt-4 text-lg font-medium text-gray-900 title-font">
-                  Company Name
+                  Massachusetts Compassionate Drug Policy Coalition
                 </h2>
                 <div className="w-12 h-1 mt-2 mb-4 rounded bg-primary-500" />
                 <p className="text-base text-gray-600">
-                  Grey yellow lime, light rainbow, navy blue red magenta mint
-                  blue plum.
+                  Meet drug use with compassion, not fear. Working to bring drug
+                  decriminalization to Massachusetts.
                 </p>
               </div>
             </div>
