@@ -19,7 +19,7 @@ export const Nav: React.FC = () => {
     <nav className="z-10 w-full py-4 bg-white border-b border-gray-100 shadow-sm md:shadow-none md:bg-transparent md:border-none">
       <div className="container flex flex-wrap items-center justify-between px-4 mx-auto md:flex-row">
         <Link to="/" className="relative flex items-center mr-6">
-          <span className="text-2xl">Starter</span>
+          <span className="text-2xl">Mass-CDPC</span>
         </Link>
 
         <div className="block md:hidden">
