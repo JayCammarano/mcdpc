@@ -26,6 +26,254 @@ type Scalars = {
 
 
 
+type Airtable = Node & {
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly table: Maybe<Scalars['String']>;
+  readonly recordId: Maybe<Scalars['String']>;
+  readonly data: Maybe<AirtableData>;
+};
+
+type AirtableConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<AirtableEdge>;
+  readonly nodes: ReadonlyArray<Airtable>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly group: ReadonlyArray<AirtableGroupConnection>;
+};
+
+
+type AirtableConnection_distinctArgs = {
+  field: AirtableFieldsEnum;
+};
+
+
+type AirtableConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: AirtableFieldsEnum;
+};
+
+type AirtableData = {
+  readonly Title: Maybe<Scalars['String']>;
+  readonly Status: Maybe<Scalars['String']>;
+  readonly Body: Maybe<Scalars['String']>;
+  readonly Headshot: Maybe<ReadonlyArray<Maybe<AirtableDataHeadshot>>>;
+  readonly ID: Maybe<Scalars['Int']>;
+};
+
+type AirtableDataFilterInput = {
+  readonly Title: Maybe<StringQueryOperatorInput>;
+  readonly Status: Maybe<StringQueryOperatorInput>;
+  readonly Body: Maybe<StringQueryOperatorInput>;
+  readonly Headshot: Maybe<AirtableDataHeadshotFilterListInput>;
+  readonly ID: Maybe<IntQueryOperatorInput>;
+};
+
+type AirtableDataHeadshot = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly filename: Maybe<Scalars['String']>;
+  readonly size: Maybe<Scalars['Int']>;
+  readonly type: Maybe<Scalars['String']>;
+  readonly thumbnails: Maybe<AirtableDataHeadshotThumbnails>;
+};
+
+type AirtableDataHeadshotFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly filename: Maybe<StringQueryOperatorInput>;
+  readonly size: Maybe<IntQueryOperatorInput>;
+  readonly type: Maybe<StringQueryOperatorInput>;
+  readonly thumbnails: Maybe<AirtableDataHeadshotThumbnailsFilterInput>;
+};
+
+type AirtableDataHeadshotFilterListInput = {
+  readonly elemMatch: Maybe<AirtableDataHeadshotFilterInput>;
+};
+
+type AirtableDataHeadshotThumbnails = {
+  readonly small: Maybe<AirtableDataHeadshotThumbnailsSmall>;
+  readonly large: Maybe<AirtableDataHeadshotThumbnailsLarge>;
+  readonly full: Maybe<AirtableDataHeadshotThumbnailsFull>;
+};
+
+type AirtableDataHeadshotThumbnailsFilterInput = {
+  readonly small: Maybe<AirtableDataHeadshotThumbnailsSmallFilterInput>;
+  readonly large: Maybe<AirtableDataHeadshotThumbnailsLargeFilterInput>;
+  readonly full: Maybe<AirtableDataHeadshotThumbnailsFullFilterInput>;
+};
+
+type AirtableDataHeadshotThumbnailsFull = {
+  readonly url: Maybe<Scalars['String']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+};
+
+type AirtableDataHeadshotThumbnailsFullFilterInput = {
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+};
+
+type AirtableDataHeadshotThumbnailsLarge = {
+  readonly url: Maybe<Scalars['String']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+};
+
+type AirtableDataHeadshotThumbnailsLargeFilterInput = {
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+};
+
+type AirtableDataHeadshotThumbnailsSmall = {
+  readonly url: Maybe<Scalars['String']>;
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+};
+
+type AirtableDataHeadshotThumbnailsSmallFilterInput = {
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+};
+
+type AirtableEdge = {
+  readonly next: Maybe<Airtable>;
+  readonly node: Airtable;
+  readonly previous: Maybe<Airtable>;
+};
+
+enum AirtableFieldsEnum {
+  id = 'id',
+  parent___id = 'parent.id',
+  parent___parent___id = 'parent.parent.id',
+  parent___parent___parent___id = 'parent.parent.parent.id',
+  parent___parent___parent___children = 'parent.parent.parent.children',
+  parent___parent___children = 'parent.parent.children',
+  parent___parent___children___id = 'parent.parent.children.id',
+  parent___parent___children___children = 'parent.parent.children.children',
+  parent___parent___internal___content = 'parent.parent.internal.content',
+  parent___parent___internal___contentDigest = 'parent.parent.internal.contentDigest',
+  parent___parent___internal___description = 'parent.parent.internal.description',
+  parent___parent___internal___fieldOwners = 'parent.parent.internal.fieldOwners',
+  parent___parent___internal___ignoreType = 'parent.parent.internal.ignoreType',
+  parent___parent___internal___mediaType = 'parent.parent.internal.mediaType',
+  parent___parent___internal___owner = 'parent.parent.internal.owner',
+  parent___parent___internal___type = 'parent.parent.internal.type',
+  parent___children = 'parent.children',
+  parent___children___id = 'parent.children.id',
+  parent___children___parent___id = 'parent.children.parent.id',
+  parent___children___parent___children = 'parent.children.parent.children',
+  parent___children___children = 'parent.children.children',
+  parent___children___children___id = 'parent.children.children.id',
+  parent___children___children___children = 'parent.children.children.children',
+  parent___children___internal___content = 'parent.children.internal.content',
+  parent___children___internal___contentDigest = 'parent.children.internal.contentDigest',
+  parent___children___internal___description = 'parent.children.internal.description',
+  parent___children___internal___fieldOwners = 'parent.children.internal.fieldOwners',
+  parent___children___internal___ignoreType = 'parent.children.internal.ignoreType',
+  parent___children___internal___mediaType = 'parent.children.internal.mediaType',
+  parent___children___internal___owner = 'parent.children.internal.owner',
+  parent___children___internal___type = 'parent.children.internal.type',
+  parent___internal___content = 'parent.internal.content',
+  parent___internal___contentDigest = 'parent.internal.contentDigest',
+  parent___internal___description = 'parent.internal.description',
+  parent___internal___fieldOwners = 'parent.internal.fieldOwners',
+  parent___internal___ignoreType = 'parent.internal.ignoreType',
+  parent___internal___mediaType = 'parent.internal.mediaType',
+  parent___internal___owner = 'parent.internal.owner',
+  parent___internal___type = 'parent.internal.type',
+  children = 'children',
+  children___id = 'children.id',
+  children___parent___id = 'children.parent.id',
+  children___parent___parent___id = 'children.parent.parent.id',
+  children___parent___parent___children = 'children.parent.parent.children',
+  children___parent___children = 'children.parent.children',
+  children___parent___children___id = 'children.parent.children.id',
+  children___parent___children___children = 'children.parent.children.children',
+  children___parent___internal___content = 'children.parent.internal.content',
+  children___parent___internal___contentDigest = 'children.parent.internal.contentDigest',
+  children___parent___internal___description = 'children.parent.internal.description',
+  children___parent___internal___fieldOwners = 'children.parent.internal.fieldOwners',
+  children___parent___internal___ignoreType = 'children.parent.internal.ignoreType',
+  children___parent___internal___mediaType = 'children.parent.internal.mediaType',
+  children___parent___internal___owner = 'children.parent.internal.owner',
+  children___parent___internal___type = 'children.parent.internal.type',
+  children___children = 'children.children',
+  children___children___id = 'children.children.id',
+  children___children___parent___id = 'children.children.parent.id',
+  children___children___parent___children = 'children.children.parent.children',
+  children___children___children = 'children.children.children',
+  children___children___children___id = 'children.children.children.id',
+  children___children___children___children = 'children.children.children.children',
+  children___children___internal___content = 'children.children.internal.content',
+  children___children___internal___contentDigest = 'children.children.internal.contentDigest',
+  children___children___internal___description = 'children.children.internal.description',
+  children___children___internal___fieldOwners = 'children.children.internal.fieldOwners',
+  children___children___internal___ignoreType = 'children.children.internal.ignoreType',
+  children___children___internal___mediaType = 'children.children.internal.mediaType',
+  children___children___internal___owner = 'children.children.internal.owner',
+  children___children___internal___type = 'children.children.internal.type',
+  children___internal___content = 'children.internal.content',
+  children___internal___contentDigest = 'children.internal.contentDigest',
+  children___internal___description = 'children.internal.description',
+  children___internal___fieldOwners = 'children.internal.fieldOwners',
+  children___internal___ignoreType = 'children.internal.ignoreType',
+  children___internal___mediaType = 'children.internal.mediaType',
+  children___internal___owner = 'children.internal.owner',
+  children___internal___type = 'children.internal.type',
+  internal___content = 'internal.content',
+  internal___contentDigest = 'internal.contentDigest',
+  internal___description = 'internal.description',
+  internal___fieldOwners = 'internal.fieldOwners',
+  internal___ignoreType = 'internal.ignoreType',
+  internal___mediaType = 'internal.mediaType',
+  internal___owner = 'internal.owner',
+  internal___type = 'internal.type',
+  table = 'table',
+  recordId = 'recordId',
+  data___Title = 'data.Title',
+  data___Status = 'data.Status',
+  data___Body = 'data.Body',
+  data___Headshot = 'data.Headshot',
+  data___Headshot___id = 'data.Headshot.id',
+  data___Headshot___url = 'data.Headshot.url',
+  data___Headshot___filename = 'data.Headshot.filename',
+  data___Headshot___size = 'data.Headshot.size',
+  data___Headshot___type = 'data.Headshot.type',
+  data___ID = 'data.ID'
+}
+
+type AirtableFilterInput = {
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly parent: Maybe<NodeFilterInput>;
+  readonly children: Maybe<NodeFilterListInput>;
+  readonly internal: Maybe<InternalFilterInput>;
+  readonly table: Maybe<StringQueryOperatorInput>;
+  readonly recordId: Maybe<StringQueryOperatorInput>;
+  readonly data: Maybe<AirtableDataFilterInput>;
+};
+
+type AirtableGroupConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<AirtableEdge>;
+  readonly nodes: ReadonlyArray<Airtable>;
+  readonly pageInfo: PageInfo;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+};
+
+type AirtableSortInput = {
+  readonly fields: Maybe<ReadonlyArray<Maybe<AirtableFieldsEnum>>>;
+  readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
+};
+
 type AVIFOptions = {
   readonly quality: Maybe<Scalars['Int']>;
   readonly lossless: Maybe<Scalars['Boolean']>;
@@ -1534,6 +1782,8 @@ type Query = {
   readonly allSitePage: SitePageConnection;
   readonly imageSharp: Maybe<ImageSharp>;
   readonly allImageSharp: ImageSharpConnection;
+  readonly airtable: Maybe<Airtable>;
+  readonly allAirtable: AirtableConnection;
   readonly siteBuildMetadata: Maybe<SiteBuildMetadata>;
   readonly allSiteBuildMetadata: SiteBuildMetadataConnection;
   readonly sitePlugin: Maybe<SitePlugin>;
@@ -1708,6 +1958,25 @@ type Query_imageSharpArgs = {
 type Query_allImageSharpArgs = {
   filter: Maybe<ImageSharpFilterInput>;
   sort: Maybe<ImageSharpSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type Query_airtableArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  table: Maybe<StringQueryOperatorInput>;
+  recordId: Maybe<StringQueryOperatorInput>;
+  data: Maybe<AirtableDataFilterInput>;
+};
+
+
+type Query_allAirtableArgs = {
+  filter: Maybe<AirtableFilterInput>;
+  sort: Maybe<AirtableSortInput>;
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
 };
@@ -2313,6 +2582,11 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___fonts___family = 'pluginCreator.pluginOptions.fonts.family',
   pluginCreator___pluginOptions___fonts___variable = 'pluginCreator.pluginOptions.fonts.variable',
   pluginCreator___pluginOptions___fonts___weights = 'pluginCreator.pluginOptions.fonts.weights',
+  pluginCreator___pluginOptions___apiKey = 'pluginCreator.pluginOptions.apiKey',
+  pluginCreator___pluginOptions___concurrency = 'pluginCreator.pluginOptions.concurrency',
+  pluginCreator___pluginOptions___tables = 'pluginCreator.pluginOptions.tables',
+  pluginCreator___pluginOptions___tables___baseId = 'pluginCreator.pluginOptions.tables.baseId',
+  pluginCreator___pluginOptions___tables___tableName = 'pluginCreator.pluginOptions.tables.tableName',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator.pluginOptions.pathCheck',
   pluginCreator___nodeAPIs = 'pluginCreator.nodeAPIs',
   pluginCreator___browserAPIs = 'pluginCreator.browserAPIs',
@@ -2533,6 +2807,11 @@ enum SitePluginFieldsEnum {
   pluginOptions___fonts___family = 'pluginOptions.fonts.family',
   pluginOptions___fonts___variable = 'pluginOptions.fonts.variable',
   pluginOptions___fonts___weights = 'pluginOptions.fonts.weights',
+  pluginOptions___apiKey = 'pluginOptions.apiKey',
+  pluginOptions___concurrency = 'pluginOptions.concurrency',
+  pluginOptions___tables = 'pluginOptions.tables',
+  pluginOptions___tables___baseId = 'pluginOptions.tables.baseId',
+  pluginOptions___tables___tableName = 'pluginOptions.tables.tableName',
   pluginOptions___pathCheck = 'pluginOptions.pathCheck',
   nodeAPIs = 'nodeAPIs',
   browserAPIs = 'browserAPIs',
@@ -2675,6 +2954,9 @@ type SitePluginPluginOptions = {
   readonly mergeCachingHeaders: Maybe<Scalars['Boolean']>;
   readonly postCssPlugins: Maybe<ReadonlyArray<Maybe<SitePluginPluginOptionsPostCssPlugins>>>;
   readonly fonts: Maybe<ReadonlyArray<Maybe<SitePluginPluginOptionsFonts>>>;
+  readonly apiKey: Maybe<Scalars['String']>;
+  readonly concurrency: Maybe<Scalars['Int']>;
+  readonly tables: Maybe<ReadonlyArray<Maybe<SitePluginPluginOptionsTables>>>;
   readonly pathCheck: Maybe<Scalars['Boolean']>;
 };
 
@@ -2725,6 +3007,9 @@ type SitePluginPluginOptionsFilterInput = {
   readonly mergeCachingHeaders: Maybe<BooleanQueryOperatorInput>;
   readonly postCssPlugins: Maybe<SitePluginPluginOptionsPostCssPluginsFilterListInput>;
   readonly fonts: Maybe<SitePluginPluginOptionsFontsFilterListInput>;
+  readonly apiKey: Maybe<StringQueryOperatorInput>;
+  readonly concurrency: Maybe<IntQueryOperatorInput>;
+  readonly tables: Maybe<SitePluginPluginOptionsTablesFilterListInput>;
   readonly pathCheck: Maybe<BooleanQueryOperatorInput>;
 };
 
@@ -2762,6 +3047,20 @@ type SitePluginPluginOptionsPostCssPluginsFilterInput = {
 
 type SitePluginPluginOptionsPostCssPluginsFilterListInput = {
   readonly elemMatch: Maybe<SitePluginPluginOptionsPostCssPluginsFilterInput>;
+};
+
+type SitePluginPluginOptionsTables = {
+  readonly baseId: Maybe<Scalars['String']>;
+  readonly tableName: Maybe<Scalars['String']>;
+};
+
+type SitePluginPluginOptionsTablesFilterInput = {
+  readonly baseId: Maybe<StringQueryOperatorInput>;
+  readonly tableName: Maybe<StringQueryOperatorInput>;
+};
+
+type SitePluginPluginOptionsTablesFilterListInput = {
+  readonly elemMatch: Maybe<SitePluginPluginOptionsTablesFilterInput>;
 };
 
 type SitePluginSortInput = {
@@ -2876,18 +3175,13 @@ type HomepageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type HomepageQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'buildContext' | 'version'>> }>, readonly siteBuildMetadata: Maybe<Pick<SiteBuildMetadata, 'buildTime'>>, readonly headerImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluid_withWebpFragment> }> }> };
 
-type FooterDataQueryVariables = Exact<{ [key: string]: never; }>;
+type AllInterviewsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type FooterDataQuery = { readonly siteBuildMetadata: Maybe<{ buildYear: SiteBuildMetadata['buildTime'] }> };
-
-type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SiteMetadataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'siteUrl' | 'title' | 'description'>
-      & { readonly social: Maybe<{ readonly twitter: Maybe<Pick<SiteSiteMetadataSocialTwitter, 'username'>> }> }
-    )> }> };
+type AllInterviewsQueryQuery = { readonly allAirtable: { readonly edges: ReadonlyArray<{ readonly node: { readonly data: Maybe<(
+          Pick<AirtableData, 'ID' | 'Title'>
+          & { readonly Headshot: Maybe<ReadonlyArray<Maybe<Pick<AirtableDataHeadshot, 'url'>>>> }
+        )> } }> } };
 
 type SocialQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2898,6 +3192,14 @@ type SocialImageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type SocialImageQueryQuery = { readonly socialImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'src'>> }> }> };
+
+type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SiteMetadataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'siteUrl' | 'title' | 'description'>
+      & { readonly social: Maybe<{ readonly twitter: Maybe<Pick<SiteSiteMetadataSocialTwitter, 'username'>> }> }
+    )> }> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -2946,5 +3248,10 @@ type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<ImageSharpSizes, 't
 type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type FooterDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type FooterDataQuery = { readonly siteBuildMetadata: Maybe<{ buildYear: SiteBuildMetadata['buildTime'] }> };
 
 }

@@ -69,6 +69,20 @@ const config: GatsbyConfig = {
         fonts: googleFonts,
       },
     },
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        apiKey: process.env.YOUR_AIRTABLE_KEY, // may instead specify via env, see below
+        concurrency: 5, // default, see using markdown and attachments for more information
+        tables: [
+          {
+            baseId: process.env.YOUR_AIRTABLE_BASE_ID,
+            tableName: process.env.YOUR_TABLE_NAME,
+            // can leave off queryName, mapping or tableLinks if not needed
+          },
+        ],
+      },
+    },
   ],
 };
 
