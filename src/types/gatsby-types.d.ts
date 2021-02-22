@@ -60,17 +60,23 @@ type AirtableConnection_groupArgs = {
 type AirtableData = {
   readonly Title: Maybe<Scalars['String']>;
   readonly Status: Maybe<Scalars['String']>;
+  readonly Soundcloud_Link: Maybe<Scalars['String']>;
   readonly Body: Maybe<Scalars['String']>;
   readonly Headshot: Maybe<ReadonlyArray<Maybe<AirtableDataHeadshot>>>;
   readonly ID: Maybe<Scalars['Int']>;
+  readonly slug: Maybe<Scalars['String']>;
+  readonly Featured: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
 type AirtableDataFilterInput = {
   readonly Title: Maybe<StringQueryOperatorInput>;
   readonly Status: Maybe<StringQueryOperatorInput>;
+  readonly Soundcloud_Link: Maybe<StringQueryOperatorInput>;
   readonly Body: Maybe<StringQueryOperatorInput>;
   readonly Headshot: Maybe<AirtableDataHeadshotFilterListInput>;
   readonly ID: Maybe<IntQueryOperatorInput>;
+  readonly slug: Maybe<StringQueryOperatorInput>;
+  readonly Featured: Maybe<StringQueryOperatorInput>;
 };
 
 type AirtableDataHeadshot = {
@@ -240,6 +246,7 @@ enum AirtableFieldsEnum {
   recordId = 'recordId',
   data___Title = 'data.Title',
   data___Status = 'data.Status',
+  data___Soundcloud_Link = 'data.Soundcloud_Link',
   data___Body = 'data.Body',
   data___Headshot = 'data.Headshot',
   data___Headshot___id = 'data.Headshot.id',
@@ -247,7 +254,9 @@ enum AirtableFieldsEnum {
   data___Headshot___filename = 'data.Headshot.filename',
   data___Headshot___size = 'data.Headshot.size',
   data___Headshot___type = 'data.Headshot.type',
-  data___ID = 'data.ID'
+  data___ID = 'data.ID',
+  data___slug = 'data.slug',
+  data___Featured = 'data.Featured'
 }
 
 type AirtableFilterInput = {
@@ -1926,6 +1935,7 @@ type Query_sitePageArgs = {
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>;
+  context: Maybe<SitePageContextFilterInput>;
   pluginCreator: Maybe<SitePluginFilterInput>;
   pluginCreatorId: Maybe<StringQueryOperatorInput>;
   componentPath: Maybe<StringQueryOperatorInput>;
@@ -2383,6 +2393,7 @@ type SitePage = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly internal: Internal;
   readonly isCreatedByStatefulCreatePages: Maybe<Scalars['Boolean']>;
+  readonly context: Maybe<SitePageContext>;
   readonly pluginCreator: Maybe<SitePlugin>;
   readonly pluginCreatorId: Maybe<Scalars['String']>;
   readonly componentPath: Maybe<Scalars['String']>;
@@ -2407,6 +2418,14 @@ type SitePageConnection_groupArgs = {
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
   field: SitePageFieldsEnum;
+};
+
+type SitePageContext = {
+  readonly slug: Maybe<Scalars['String']>;
+};
+
+type SitePageContextFilterInput = {
+  readonly slug: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePageEdge = {
@@ -2508,6 +2527,7 @@ enum SitePageFieldsEnum {
   internal___owner = 'internal.owner',
   internal___type = 'internal.type',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
+  context___slug = 'context.slug',
   pluginCreator___id = 'pluginCreator.id',
   pluginCreator___parent___id = 'pluginCreator.parent.id',
   pluginCreator___parent___parent___id = 'pluginCreator.parent.parent.id',
@@ -2622,6 +2642,7 @@ type SitePageFilterInput = {
   readonly children: Maybe<NodeFilterListInput>;
   readonly internal: Maybe<InternalFilterInput>;
   readonly isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>;
+  readonly context: Maybe<SitePageContextFilterInput>;
   readonly pluginCreator: Maybe<SitePluginFilterInput>;
   readonly pluginCreatorId: Maybe<StringQueryOperatorInput>;
   readonly componentPath: Maybe<StringQueryOperatorInput>;
@@ -3158,6 +3179,16 @@ type WebPOptions = {
   readonly quality: Maybe<Scalars['Int']>;
 };
 
+type BlogPostByPathQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+type BlogPostByPathQuery = { readonly airtable: Maybe<{ readonly data: Maybe<(
+      Pick<AirtableData, 'Title' | 'Body' | 'slug' | 'Soundcloud_Link'>
+      & { readonly Headshot: Maybe<ReadonlyArray<Maybe<{ readonly thumbnails: Maybe<{ readonly large: Maybe<Pick<AirtableDataHeadshotThumbnailsLarge, 'url'>> }> }>>> }
+    )> }> };
+
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3179,9 +3210,17 @@ type AllInterviewsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type AllInterviewsQueryQuery = { readonly allAirtable: { readonly edges: ReadonlyArray<{ readonly node: { readonly data: Maybe<(
-          Pick<AirtableData, 'ID' | 'Title'>
+          Pick<AirtableData, 'ID' | 'Title' | 'slug'>
           & { readonly Headshot: Maybe<ReadonlyArray<Maybe<Pick<AirtableDataHeadshot, 'url'>>>> }
         )> } }> } };
+
+type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SiteMetadataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'siteUrl' | 'title' | 'description'>
+      & { readonly social: Maybe<{ readonly twitter: Maybe<Pick<SiteSiteMetadataSocialTwitter, 'username'>> }> }
+    )> }> };
 
 type SocialQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3193,13 +3232,10 @@ type SocialImageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type SocialImageQueryQuery = { readonly socialImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'src'>> }> }> };
 
-type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+type FooterDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type SiteMetadataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'siteUrl' | 'title' | 'description'>
-      & { readonly social: Maybe<{ readonly twitter: Maybe<Pick<SiteSiteMetadataSocialTwitter, 'username'>> }> }
-    )> }> };
+type FooterDataQuery = { readonly siteBuildMetadata: Maybe<{ buildYear: SiteBuildMetadata['buildTime'] }> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -3248,10 +3284,5 @@ type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<ImageSharpSizes, 't
 type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type FooterDataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type FooterDataQuery = { readonly siteBuildMetadata: Maybe<{ buildYear: SiteBuildMetadata['buildTime'] }> };
 
 }

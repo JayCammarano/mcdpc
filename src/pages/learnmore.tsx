@@ -8,13 +8,9 @@ interface ILearnMore {
 }
 const learnMore: React.FC<ILearnMore> = ({ location, data }) => {
   const interviews = data.allAirtable.edges.map((node) => {
-    const sluggifiedTitle = node.node.data.Title.toLowerCase().replace(
-      /[^a-zA-Z0-9-_]/g,
-      '-',
-    );
     return (
-      <div key={sluggifiedTitle}>
-        <Link to={`/interviews/${sluggifiedTitle}`}>
+      <div key={node.node.data.Title}>
+        <Link to={`/interviews/${node.node.data.slug}`}>
           <img
             className="w-40 m-4"
             alt={node.node.data.Title}
@@ -56,6 +52,7 @@ export const query = graphql`
               url
             }
             Title
+            slug
           }
         }
       }
