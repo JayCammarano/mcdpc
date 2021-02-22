@@ -19,7 +19,7 @@ export const Nav: React.FC = () => {
     <nav className="z-10 w-full py-4 bg-white border-b border-gray-100 shadow-sm md:shadow-none md:bg-transparent md:border-none">
       <div className="container flex flex-wrap items-center justify-between px-4 mx-auto md:flex-row">
         <Link to="/" className="relative flex items-center mr-6">
-          <span className="text-2xl">Starter</span>
+          <span className="text-2xl">Mass-CDPC</span>
         </Link>
 
         <div className="block md:hidden">
@@ -50,8 +50,8 @@ export const Nav: React.FC = () => {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about/">About</NavLink>
             <NavLink to="#">
-              <span className="relative inline-block px-3 py-1 text-base uppercase transition-colors duration-200 ease-in-out bg-white border-2 rounded text-primary border-primary fold-bold hover:bg-primary-500 hover:text-white">
-                Sign Up
+              <span className="relative inline-block px-3 py-1 text-base uppercase transition-colors duration-200 ease-in-out bg-white border-2 rounded text-primary border-primary fold-bold hover:bg-primary-500 hover:text-gold">
+                Get Involved
               </span>
             </NavLink>
           </div>

@@ -1,5 +1,6 @@
 import { GatsbyNode } from 'gatsby';
 import * as path from 'path';
+import slash from 'slash';
 
 // export const createPages: GatsbyNode['createPages'] = async ({
 //   graphql,
@@ -76,4 +77,43 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
       devtool: false,
     });
   }
+};
+
+exports.createPages = ({ graphql, boundActionCreators }) => {
+  const { createPage } = boundActionCreators;
+  return new Promise((resolve, reject) => {
+    const blogPostTemplate = path.resolve(
+      'src/templates/interview-template.tsx',
+    );
+    resolve(
+      graphql(
+        `
+          {
+            allAirtable {
+              edges {
+                node {
+                  data {
+                    slug
+                  }
+                }
+              }
+            }
+          }
+        `,
+      ).then((result) => {
+        if (result.error) {
+          reject(result.error);
+        }
+        result.data.allAirtable.edges.forEach((edge) => {
+          createPage({
+            path: `interviews/${edge.node.data.slug}`,
+            component: slash(blogPostTemplate),
+            context: {
+              slug: edge.node.data.slug,
+            },
+          });
+        });
+      }),
+    );
+  });
 };
