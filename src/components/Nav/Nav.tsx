@@ -50,8 +50,8 @@ export const Nav: React.FC = () => {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about/">About</NavLink>
             <NavLink to="#">
-              <span className="relative inline-block px-3 py-1 text-base uppercase transition-colors duration-200 ease-in-out bg-white border-2 rounded text-primary border-primary fold-bold hover:bg-primary-500 hover:text-white">
-                Sign Up
+              <span className="relative inline-block px-3 py-1 text-base uppercase transition-colors duration-200 ease-in-out bg-white border-2 rounded text-primary border-primary fold-bold hover:bg-primary-500 hover:text-gold">
+                Get Involved
               </span>
             </NavLink>
           </div>
