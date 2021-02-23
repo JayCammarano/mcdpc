@@ -19791,7 +19791,7 @@
             "defaultValue": null
           },
           {
-            "name": "slug",
+            "name": "Featured",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -19801,7 +19801,7 @@
             "defaultValue": null
           },
           {
-            "name": "Featured",
+            "name": "slug",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -20274,18 +20274,6 @@
             "deprecationReason": null
           },
           {
-            "name": "slug",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "Featured",
             "description": null,
             "args": [],
@@ -20297,6 +20285,18 @@
                 "name": "String",
                 "ofType": null
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "slug",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -21301,13 +21301,13 @@
             "deprecationReason": null
           },
           {
-            "name": "data___slug",
+            "name": "data___Featured",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "data___Featured",
+            "name": "data___slug",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null

@@ -4,10 +4,15 @@ const colors = require('tailwindcss/colors');
 const theme = {
   colors: {
     ...colors,
-    primary: {
-      ...colors.darkBlue,
-      DEFAULT: colors.darkBlue[500],
+    darkBlue: {
+      DEFAULT: '#021D3D',
     },
+    darkBlue: {
+      100: '#E4EFF7',
+      400: '#014073',
+      500: '#021D3D',
+    },
+    gold: '#FED936',
     secondary: {
       50: '#f3f1e0',
       100: '#e0dcb3',

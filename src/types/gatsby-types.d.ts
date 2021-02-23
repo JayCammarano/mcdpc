@@ -64,8 +64,8 @@ type AirtableData = {
   readonly Body: Maybe<Scalars['String']>;
   readonly Headshot: Maybe<ReadonlyArray<Maybe<AirtableDataHeadshot>>>;
   readonly ID: Maybe<Scalars['Int']>;
-  readonly slug: Maybe<Scalars['String']>;
   readonly Featured: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly slug: Maybe<Scalars['String']>;
 };
 
 type AirtableDataFilterInput = {
@@ -75,8 +75,8 @@ type AirtableDataFilterInput = {
   readonly Body: Maybe<StringQueryOperatorInput>;
   readonly Headshot: Maybe<AirtableDataHeadshotFilterListInput>;
   readonly ID: Maybe<IntQueryOperatorInput>;
-  readonly slug: Maybe<StringQueryOperatorInput>;
   readonly Featured: Maybe<StringQueryOperatorInput>;
+  readonly slug: Maybe<StringQueryOperatorInput>;
 };
 
 type AirtableDataHeadshot = {
@@ -255,8 +255,8 @@ enum AirtableFieldsEnum {
   data___Headshot___size = 'data.Headshot.size',
   data___Headshot___type = 'data.Headshot.type',
   data___ID = 'data.ID',
-  data___slug = 'data.slug',
-  data___Featured = 'data.Featured'
+  data___Featured = 'data.Featured',
+  data___slug = 'data.slug'
 }
 
 type AirtableFilterInput = {
@@ -3209,10 +3209,10 @@ type HomepageQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<
 type AllInterviewsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AllInterviewsQueryQuery = { readonly allAirtable: { readonly edges: ReadonlyArray<{ readonly node: { readonly data: Maybe<(
-          Pick<AirtableData, 'ID' | 'Title' | 'slug'>
-          & { readonly Headshot: Maybe<ReadonlyArray<Maybe<Pick<AirtableDataHeadshot, 'url'>>>> }
-        )> } }> } };
+type AllInterviewsQueryQuery = { readonly allAirtable: { readonly nodes: ReadonlyArray<{ readonly data: Maybe<(
+        Pick<AirtableData, 'Title' | 'Featured' | 'slug'>
+        & { readonly Headshot: Maybe<ReadonlyArray<Maybe<{ readonly thumbnails: Maybe<{ readonly full: Maybe<Pick<AirtableDataHeadshotThumbnailsFull, 'url'>> }> }>>> }
+      )> }> } };
 
 type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3222,15 +3222,15 @@ type SiteMetadataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
       & { readonly social: Maybe<{ readonly twitter: Maybe<Pick<SiteSiteMetadataSocialTwitter, 'username'>> }> }
     )> }> };
 
-type SocialQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SocialQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly social: Maybe<{ readonly twitter: Maybe<Pick<SiteSiteMetadataSocialTwitter, 'username'>>, readonly facebook: Maybe<Pick<SiteSiteMetadataSocialFacebook, 'username'>>, readonly instagram: Maybe<Pick<SiteSiteMetadataSocialInstagram, 'username'>> }> }> }> };
-
 type SocialImageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type SocialImageQueryQuery = { readonly socialImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'src'>> }> }> };
+
+type SocialQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SocialQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly social: Maybe<{ readonly twitter: Maybe<Pick<SiteSiteMetadataSocialTwitter, 'username'>>, readonly facebook: Maybe<Pick<SiteSiteMetadataSocialFacebook, 'username'>>, readonly instagram: Maybe<Pick<SiteSiteMetadataSocialInstagram, 'username'>> }> }> }> };
 
 type FooterDataQueryVariables = Exact<{ [key: string]: never; }>;
 

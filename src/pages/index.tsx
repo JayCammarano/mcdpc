@@ -26,7 +26,7 @@ const HomePage: React.FC<IHomepageProps> = ({ location, data }) => (
           <div className="flex justify-center">
             <a href="/learnmore">
               <button
-                className="inline-flex px-6 py-2 text-lg border-0 rounded text-gold bg-primary-500 focus:outline-none hover:bg-primary-600"
+                className="inline-flex px-6 py-2 text-lg border-0 rounded text-gold bg-darkBlue-500 focus:outline-none hover:bg-darkBlue-600"
                 type="button"
               >
                 Learn More
