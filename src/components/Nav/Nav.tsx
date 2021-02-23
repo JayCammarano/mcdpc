@@ -16,7 +16,7 @@ export const Nav: React.FC = () => {
   useResize(handleResize);
 
   return (
-    <nav className="z-10 w-full py-4 bg-white border-b border-gray-100 shadow-sm md:shadow-none md:bg-transparent md:border-none">
+    <nav className="z-10 w-full py-4 border-b border-gray-100 shadow-sm bg-darkBlue-100 md:shadow-none md:bg-transparent md:border-none">
       <div className="container flex flex-wrap items-center justify-between px-4 mx-auto md:flex-row">
         <Link to="/" className="relative flex items-center mr-6">
           <span className="text-2xl">Mass-CDPC</span>
@@ -42,7 +42,7 @@ export const Nav: React.FC = () => {
 
         <div
           id="nav-content"
-          className={`flex-grow w-full pt-2 md:flex md:items-center md:w-auto md:block md:pt-0 transition-all ease-in-out transform md:transform-none md:visible ${
+          className={`flex-grow w-full pt-2 md:flex md:items-center md:w-auto md:pt-0 transition-all ease-in-out transform md:transform-none md:visible ${
             !isOpen && 'hidden'
           }`}
         >
@@ -50,7 +50,7 @@ export const Nav: React.FC = () => {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about/">About</NavLink>
             <NavLink to="#">
-              <span className="relative inline-block px-3 py-1 text-base uppercase transition-colors duration-200 ease-in-out bg-white border-2 rounded text-primary border-primary fold-bold hover:bg-primary-500 hover:text-gold">
+              <span className="relative inline-block px-3 py-1 text-base uppercase transition-colors duration-200 ease-in-out border-2 rounded bg-darkBlue-100 text-darkBlue-500 border-darkBlue-500 fold-bold hover:bg-darkBlue-500 hover:text-gold">
                 Get Involved
               </span>
             </NavLink>

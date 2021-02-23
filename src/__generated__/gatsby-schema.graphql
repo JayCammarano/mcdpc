@@ -73,8 +73,8 @@ type AirtableData {
   Body: String
   Headshot: [AirtableDataHeadshot]
   ID: Int
-  slug: String
   Featured: [String]
+  slug: String
 }
 
 input AirtableDataFilterInput {
@@ -84,8 +84,8 @@ input AirtableDataFilterInput {
   Body: StringQueryOperatorInput
   Headshot: AirtableDataHeadshotFilterListInput
   ID: IntQueryOperatorInput
-  slug: StringQueryOperatorInput
   Featured: StringQueryOperatorInput
+  slug: StringQueryOperatorInput
 }
 
 type AirtableDataHeadshot {
@@ -264,8 +264,8 @@ enum AirtableFieldsEnum {
   data___Headshot___size
   data___Headshot___type
   data___ID
-  data___slug
   data___Featured
+  data___slug
 }
 
 input AirtableFilterInput {

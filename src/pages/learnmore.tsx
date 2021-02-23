@@ -7,18 +7,37 @@ interface ILearnMore {
   data: GatsbyTypes.AllInterviewsQueryQuery;
 }
 const learnMore: React.FC<ILearnMore> = ({ location, data }) => {
-  const interviews = data.allAirtable.edges.map((node) => {
-    return (
-      <div key={node.node.data.Title}>
-        <Link to={`/interviews/${node.node.data.slug}`}>
-          <img
-            className="w-40 m-4"
-            alt={node.node.data.Title}
-            src={node.node.data.Headshot[0].url}
-          />
-        </Link>
-      </div>
-    );
+  const featuredInterviews = data.allAirtable.nodes.map((node) => {
+    if (node.data.Featured) {
+      return (
+        <div key={node.data.Title}>
+          <Link to={`/interviews/${node.data.slug}`}>
+            <img
+              className="w-40 m-4"
+              alt={node.data.Title}
+              src={node.data.Headshot[0].thumbnails.full.url}
+            />
+          </Link>
+        </div>
+      );
+    }
+    return null;
+  });
+  const moreInterviews = data.allAirtable.nodes.map((node) => {
+    if (!node.data.Featured) {
+      return (
+        <div key={node.data.Title}>
+          <Link to={`/interviews/${node.data.slug}`}>
+            <img
+              className="w-40 m-4"
+              alt={node.data.Title}
+              src={node.data.Headshot[0].thumbnails.full.url}
+            />
+          </Link>
+        </div>
+      );
+    }
+    return null;
   });
   return (
     <Layout location={location}>
@@ -27,7 +46,16 @@ const learnMore: React.FC<ILearnMore> = ({ location, data }) => {
           <h1 className="mb-4 text-3xl font-medium leading-tight text-gray-900 title-font sm:text-4xl">
             Hear Stories From The Community
           </h1>
-          <div className="flex flex-row">{interviews}</div>
+          <div className="flex flex-row">
+            <div className="flex flex-row">{featuredInterviews}</div>
+            <div className="flex flex-row">{moreInterviews}</div>
+          </div>
+          <button
+            className="inline-flex px-6 py-2 text-lg border-0 rounded text-gold bg-darkBlue-500 focus:outline-none hover:bg-darkBlue-600"
+            type="button"
+          >
+            View More
+          </button>
         </div>
         <div className="ml-8">
           <h1 className="mb-4 text-3xl font-medium leading-tight text-gray-900 title-font sm:text-4xl">
@@ -42,18 +70,20 @@ export const query = graphql`
   query AllInterviewsQuery {
     allAirtable(
       filter: { data: { Status: { eq: "Published" } } }
-      sort: { fields: data___ID, order: DESC }
+      sort: { fields: data___Featured, order: ASC }
     ) {
-      edges {
-        node {
-          data {
-            ID
-            Headshot {
-              url
+      nodes {
+        data {
+          Title
+          Featured
+          Headshot {
+            thumbnails {
+              full {
+                url
+              }
             }
-            Title
-            slug
           }
+          slug
         }
       }
     }

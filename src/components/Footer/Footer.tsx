@@ -21,14 +21,14 @@ const Footer: React.FC<IFooterProps> = () => {
     siteBuildMetadata: { buildYear },
   } = data;
   return (
-    <footer className="text-gray-700 body-font">
+    <footer className="text-gray-700 bg-darkBlue-100 body-font">
       <div className="container flex flex-col flex-wrap px-4 py-12 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
         <div className="flex-shrink-0 mx-auto text-center md:w-64 md:mx-0 md:text-left">
           <Link
             className="inline-flex items-center justify-center font-medium text-left text-gray-900 md:justify-start"
             to="/"
           >
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary-500">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-darkBlue-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

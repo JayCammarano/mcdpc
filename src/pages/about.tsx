@@ -40,7 +40,7 @@ const AboutPage: React.FC<IAboutPageProps> = ({ location, data }) => (
                 <h2 className="mt-4 text-lg font-medium text-gray-900 title-font">
                   Massachusetts Compassionate Drug Policy Coalition
                 </h2>
-                <div className="w-12 h-1 mt-2 mb-4 rounded bg-primary-500" />
+                <div className="w-12 h-1 mt-2 mb-4 rounded bg-darkBlue-500" />
                 <p className="text-base text-gray-600">
                   Meet drug use with compassion, not fear. Working to bring drug
                   decriminalization to Massachusetts.
@@ -87,16 +87,16 @@ const AboutPage: React.FC<IAboutPageProps> = ({ location, data }) => (
             persimmon navy blue paint; chroma grey gradient.
           </p>
           <input
-            className="px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded focus:outline-none focus:border-primary-500"
+            className="px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded focus:outline-none focus:border-darkBlue-500"
             placeholder="Email"
             type="email"
           />
           <textarea
-            className="h-32 px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded resize-none focus:outline-none focus:border-primary-500"
+            className="h-32 px-4 py-2 mb-4 text-base bg-white border border-gray-400 rounded resize-none focus:outline-none focus:border-darkBlue-500"
             placeholder="Message"
           />
           <button
-            className="px-6 py-2 text-lg text-white border-0 rounded bg-primary-500 focus:outline-none hover:bg-primary-600"
+            className="px-6 py-2 text-lg text-white border-0 rounded bg-darkBlue-500 focus:outline-none hover:bg-darkBlue-600"
             type="button"
           >
             Button
